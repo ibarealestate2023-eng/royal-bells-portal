@@ -7,26 +7,26 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-slide-in-down">
       <nav className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <GraduationCap className="h-8 w-8 text-primary" />
+        <Link to="/" className="flex items-center space-x-2 hover-scale group">
+          <GraduationCap className="h-8 w-8 text-primary transition-transform group-hover:rotate-12" />
           <span className="text-xl font-bold text-primary">Royal Bells</span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
-          <Link to="/" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link to="/" className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
             Home
           </Link>
-          <Link to="/about" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link to="/about" className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
             About
           </Link>
           <div className="group relative">
-            <button className="text-sm font-medium transition-colors hover:text-primary">
+            <button className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
               Primary
             </button>
-            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 animate-fade-in-down">
               <div className="py-1">
                 <Link to="/primary" className="block px-4 py-2 text-sm hover:bg-muted">Home</Link>
                 <Link to="/primary/about" className="block px-4 py-2 text-sm hover:bg-muted">About</Link>
@@ -40,10 +40,10 @@ const Header = () => {
             </div>
           </div>
           <div className="group relative">
-            <button className="text-sm font-medium transition-colors hover:text-primary">
+            <button className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
               Secondary
             </button>
-            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 animate-fade-in-down">
               <div className="py-1">
                 <Link to="/secondary" className="block px-4 py-2 text-sm hover:bg-muted">Home</Link>
                 <Link to="/secondary/about" className="block px-4 py-2 text-sm hover:bg-muted">About</Link>
@@ -56,10 +56,10 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <Link to="/contact" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link to="/contact" className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
             Contact
           </Link>
-          <Button asChild>
+          <Button asChild className="hover-scale animate-pulse-glow">
             <Link to="/contact">Apply Now</Link>
           </Button>
         </div>
@@ -75,7 +75,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t">
+        <div className="md:hidden border-t animate-slide-in-down">
           <div className="container py-4 space-y-3">
             <Link to="/" className="block py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Home
