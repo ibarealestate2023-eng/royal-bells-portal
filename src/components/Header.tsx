@@ -24,9 +24,26 @@ const Header = () => {
           </Link>
           <div className="group relative">
             <button className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
+              Nursery
+            </button>
+            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 animate-fade-in-down z-50">
+              <div className="py-1">
+                <Link to="/nursery" className="block px-4 py-2 text-sm hover:bg-muted">Home</Link>
+                <Link to="/nursery/about" className="block px-4 py-2 text-sm hover:bg-muted">About</Link>
+                <Link to="/nursery/curriculum" className="block px-4 py-2 text-sm hover:bg-muted">Classes</Link>
+                <Link to="/nursery/teachers" className="block px-4 py-2 text-sm hover:bg-muted">Teachers</Link>
+                <Link to="/nursery/gallery" className="block px-4 py-2 text-sm hover:bg-muted">Gallery</Link>
+                <Link to="/nursery/events" className="block px-4 py-2 text-sm hover:bg-muted">Events</Link>
+                <Link to="/nursery/admissions" className="block px-4 py-2 text-sm hover:bg-muted">Admissions</Link>
+                <Link to="/nursery/facilities" className="block px-4 py-2 text-sm hover:bg-muted">Facilities</Link>
+              </div>
+            </div>
+          </div>
+          <div className="group relative">
+            <button className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
               Primary
             </button>
-            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 animate-fade-in-down">
+            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 animate-fade-in-down z-50">
               <div className="py-1">
                 <Link to="/primary" className="block px-4 py-2 text-sm hover:bg-muted">Home</Link>
                 <Link to="/primary/about" className="block px-4 py-2 text-sm hover:bg-muted">About</Link>
@@ -43,7 +60,7 @@ const Header = () => {
             <button className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
               Secondary
             </button>
-            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 animate-fade-in-down">
+            <div className="absolute left-0 mt-2 w-48 rounded-md bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 animate-fade-in-down z-50">
               <div className="py-1">
                 <Link to="/secondary" className="block px-4 py-2 text-sm hover:bg-muted">Home</Link>
                 <Link to="/secondary/about" className="block px-4 py-2 text-sm hover:bg-muted">About</Link>
@@ -75,36 +92,62 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t animate-slide-in-down">
-          <div className="container py-4 space-y-3">
+        <div className="md:hidden border-t animate-slide-in-down bg-background">
+          <div className="container py-4 space-y-3 max-h-[80vh] overflow-y-auto">
             <Link to="/" className="block py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Home
             </Link>
             <Link to="/about" className="block py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               About
             </Link>
-            <div className="space-y-2">
-              <p className="text-sm font-semibold text-primary">Primary Section</p>
-              <Link to="/primary" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-              <Link to="/primary/about" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>About</Link>
-              <Link to="/primary/curriculum" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Curriculum</Link>
-              <Link to="/primary/teachers" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Teachers</Link>
-              <Link to="/primary/gallery" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Gallery</Link>
-              <Link to="/primary/events" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Events</Link>
-              <Link to="/primary/admissions" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Admissions</Link>
-              <Link to="/primary/facilities" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Facilities</Link>
-            </div>
-            <div className="space-y-2">
-              <p className="text-sm font-semibold text-primary">Secondary Section</p>
-              <Link to="/secondary" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-              <Link to="/secondary/about" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>About</Link>
-              <Link to="/secondary/curriculum" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Curriculum</Link>
-              <Link to="/secondary/teachers" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Teachers</Link>
-              <Link to="/secondary/gallery" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Gallery</Link>
-              <Link to="/secondary/events" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Events</Link>
-              <Link to="/secondary/admissions" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Admissions</Link>
-              <Link to="/secondary/facilities" className="block pl-4 py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Facilities</Link>
-            </div>
+            <details className="group">
+              <summary className="cursor-pointer py-2 text-sm font-semibold text-accent list-none flex items-center justify-between">
+                Nursery Section
+                <span className="transition-transform group-open:rotate-180">▼</span>
+              </summary>
+              <div className="pl-4 space-y-2 mt-2">
+                <Link to="/nursery" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+                <Link to="/nursery/about" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>About</Link>
+                <Link to="/nursery/curriculum" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Classes</Link>
+                <Link to="/nursery/teachers" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Teachers</Link>
+                <Link to="/nursery/gallery" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Gallery</Link>
+                <Link to="/nursery/events" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Events</Link>
+                <Link to="/nursery/admissions" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Admissions</Link>
+                <Link to="/nursery/facilities" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Facilities</Link>
+              </div>
+            </details>
+            <details className="group">
+              <summary className="cursor-pointer py-2 text-sm font-semibold text-secondary list-none flex items-center justify-between">
+                Primary Section
+                <span className="transition-transform group-open:rotate-180">▼</span>
+              </summary>
+              <div className="pl-4 space-y-2 mt-2">
+                <Link to="/primary" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+                <Link to="/primary/about" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>About</Link>
+                <Link to="/primary/curriculum" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Curriculum</Link>
+                <Link to="/primary/teachers" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Teachers</Link>
+                <Link to="/primary/gallery" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Gallery</Link>
+                <Link to="/primary/events" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Events</Link>
+                <Link to="/primary/admissions" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Admissions</Link>
+                <Link to="/primary/facilities" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Facilities</Link>
+              </div>
+            </details>
+            <details className="group">
+              <summary className="cursor-pointer py-2 text-sm font-semibold text-primary list-none flex items-center justify-between">
+                Secondary Section
+                <span className="transition-transform group-open:rotate-180">▼</span>
+              </summary>
+              <div className="pl-4 space-y-2 mt-2">
+                <Link to="/secondary" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+                <Link to="/secondary/about" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>About</Link>
+                <Link to="/secondary/curriculum" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Curriculum</Link>
+                <Link to="/secondary/teachers" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Teachers</Link>
+                <Link to="/secondary/gallery" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Gallery</Link>
+                <Link to="/secondary/events" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Events</Link>
+                <Link to="/secondary/admissions" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Admissions</Link>
+                <Link to="/secondary/facilities" className="block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>Facilities</Link>
+              </div>
+            </details>
             <Link to="/contact" className="block py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Contact
             </Link>

@@ -5,7 +5,7 @@ import { Image } from "lucide-react";
 
 const PrimaryGallery = () => {
   const galleries = [
-    { title: "Classroom Activities", count: 24 },
+    { id: "classroom-activities", title: "Classroom Activities", count: 24 },
     { title: "Sports Day 2024", count: 36 },
     { title: "Science Fair", count: 18 },
     { title: "Cultural Day", count: 42 },
@@ -47,7 +47,8 @@ const PrimaryGallery = () => {
         {/* Gallery Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleries.map((gallery, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer">
+            <Link key={index} to={`/primary/gallery/${gallery.id}`}>
+              <Card className="overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer">
               <div className="relative h-64 bg-gradient-to-br from-secondary/20 to-secondary/5 flex items-center justify-center">
                 <Image className="h-16 w-16 text-secondary/40 group-hover:text-secondary/60 transition-colors" />
               </div>
@@ -55,7 +56,8 @@ const PrimaryGallery = () => {
                 <h3 className="text-xl font-bold mb-2">{gallery.title}</h3>
                 <p className="text-sm text-muted-foreground">{gallery.count} photos</p>
               </div>
-            </Card>
+              </Card>
+            </Link>
           ))}
         </div>
       </section>

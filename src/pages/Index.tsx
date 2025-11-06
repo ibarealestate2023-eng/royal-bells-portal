@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import schoolHero from "@/assets/school-hero.jpg";
 import primaryHero from "@/assets/primary-hero.jpg";
 import secondaryHero from "@/assets/secondary-hero.jpg";
+import nurseryHero from "@/assets/nursery-hero.jpg";
 import { BookOpen, Users, Trophy, Globe, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const Index = () => {
@@ -52,9 +53,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Two Sections */}
+      {/* Three Sections */}
       <section className="container py-20">
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Primary Section Card */}
           <Card className="overflow-hidden group hover-lift hover-glow animate-fade-in-left">
             <div className="relative h-64 overflow-hidden">
@@ -115,6 +116,37 @@ const Index = () => {
               </ul>
               <Button asChild className="w-full">
                 <Link to="/secondary">Explore Secondary <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              </Button>
+            </div>
+          </Card>
+
+          {/* Nursery Section Card */}
+          <Card className="overflow-hidden group hover-lift hover-glow animate-fade-in animation-delay-400">
+            <div className="relative h-64 overflow-hidden">
+              <img src={nurseryHero} alt="Nursery Section" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-accent/20 group-hover:bg-accent/30 transition-all duration-300" />
+            </div>
+            <div className="p-8">
+              <h3 className="text-3xl font-bold mb-4 text-accent">Nursery Section</h3>
+              <p className="text-muted-foreground mb-6">
+                A nurturing start for young learners aged 2-5, with play-based learning in a warm environment.
+              </p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-accent" />
+                  <span>Safe & Caring Environment</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-accent" />
+                  <span>Play-Based Learning</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-accent" />
+                  <span>Qualified Early Years Teachers</span>
+                </li>
+              </ul>
+              <Button asChild variant="default" className="w-full bg-accent hover:bg-accent/90">
+                <Link to="/nursery">Explore Nursery <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </div>
           </Card>

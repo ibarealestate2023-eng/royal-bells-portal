@@ -22,6 +22,17 @@ import SecondaryGallery from "./pages/secondary/SecondaryGallery";
 import SecondaryEvents from "./pages/secondary/SecondaryEvents";
 import SecondaryAdmissions from "./pages/secondary/SecondaryAdmissions";
 import SecondaryFacilities from "./pages/secondary/SecondaryFacilities";
+import NurseryHome from "./pages/nursery/NurseryHome";
+import NurseryAbout from "./pages/nursery/NurseryAbout";
+import NurseryCurriculum from "./pages/nursery/NurseryCurriculum";
+import NurseryTeachers from "./pages/nursery/NurseryTeachers";
+import NurseryGallery from "./pages/nursery/NurseryGallery";
+import NurseryEvents from "./pages/nursery/NurseryEvents";
+import NurseryAdmissions from "./pages/nursery/NurseryAdmissions";
+import NurseryFacilities from "./pages/nursery/NurseryFacilities";
+import PrimaryGalleryDetail from "./pages/gallery/PrimaryGalleryDetail";
+import SecondaryGalleryDetail from "./pages/gallery/SecondaryGalleryDetail";
+import NurseryGalleryDetail from "./pages/gallery/NurseryGalleryDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -52,6 +63,17 @@ const App = () => (
           <Route path="/secondary/events" element={<SecondaryEvents />} />
           <Route path="/secondary/admissions" element={<SecondaryAdmissions />} />
           <Route path="/secondary/facilities" element={<SecondaryFacilities />} />
+          <Route path="/nursery" element={<NurseryHome />} />
+          <Route path="/nursery/about" element={<NurseryAbout />} />
+          <Route path="/nursery/curriculum" element={<NurseryCurriculum />} />
+          <Route path="/nursery/teachers" element={<NurseryTeachers />} />
+          <Route path="/nursery/gallery" element={<NurseryGallery />} />
+          <Route path="/nursery/events" element={<NurseryEvents />} />
+          <Route path="/nursery/admissions" element={<NurseryAdmissions />} />
+          <Route path="/nursery/facilities" element={<NurseryFacilities />} />
+          <Route path="/primary/gallery/:id" element={<PrimaryGalleryDetail />} />
+          <Route path="/secondary/gallery/:id" element={<SecondaryGalleryDetail />} />
+          <Route path="/nursery/gallery/:id" element={<NurseryGalleryDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
