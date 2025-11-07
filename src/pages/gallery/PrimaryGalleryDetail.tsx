@@ -1,11 +1,14 @@
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Lightbox from "@/components/Lightbox";
+import GalleryUpload from "@/components/GalleryUpload";
 import { ArrowLeft } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import classroomImg from "@/assets/gallery/primary-classroom-1.jpg";
 import sportsImg from "@/assets/gallery/primary-sports-1.jpg";
 import scienceImg from "@/assets/gallery/primary-science-1.jpg";
@@ -15,6 +18,7 @@ const PrimaryGalleryDetail = () => {
   const { id } = useParams();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [uploadedImages, setUploadedImages] = useState<Array<{ id: string; url: string; alt: string }>>([]);
 
   // Map gallery IDs to sample images
   const galleryImages: Record<string, string> = {
@@ -22,6 +26,30 @@ const PrimaryGalleryDetail = () => {
     "sports-day": sportsImg,
     "science-fair": scienceImg,
     "cultural-day": culturalImg,
+  };
+
+  useEffect(() => {
+    fetchUploadedImages();
+  }, [id]);
+
+  const fetchUploadedImages = async () => {
+    if (!id) return;
+
+    const { data, error } = await supabase
+      .from("gallery_images")
+      .select("*")
+      .eq("gallery_id", id)
+      .eq("section", "primary")
+      .order("created_at", { ascending: false });
+
+    if (data && !error) {
+      const formattedImages = data.map((img) => ({
+        id: img.id,
+        url: img.image_url,
+        alt: img.caption || `Gallery image ${img.id}`,
+      }));
+      setUploadedImages(formattedImages);
+    }
   };
 
   // Sample data - in a real app, this would come from an API or database
@@ -76,11 +104,20 @@ const PrimaryGalleryDetail = () => {
 
   // Generate images with actual photos for some galleries
   const sampleImage = galleryImages[id || ""] || classroomImg;
-  const images = Array.from({ length: gallery.count }, (_, i) => ({
-    id: i + 1,
+  const sampleImages = Array.from({ length: gallery.count }, (_, i) => ({
+    id: uploadedImages.length + i + 1,
     url: sampleImage,
     alt: `${gallery.title} - Image ${i + 1}`
   }));
+
+  // Combine uploaded images with sample images (convert string ids to numbers for display)
+  const formattedUploadedImages = uploadedImages.map((img, index) => ({
+    id: index + 1,
+    url: img.url,
+    alt: img.alt
+  }));
+  
+  const allImages = [...formattedUploadedImages, ...sampleImages];
 
   const handleImageClick = (index: number) => {
     setCurrentImageIndex(index);
@@ -88,11 +125,11 @@ const PrimaryGalleryDetail = () => {
   };
 
   const handleNext = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
   };
 
   const handlePrevious = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
   };
 
   return (
@@ -113,28 +150,47 @@ const PrimaryGalleryDetail = () => {
       </section>
 
       <section className="container py-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image, index) => (
-            <Card 
-              key={image.id} 
-              className="overflow-hidden group cursor-pointer hover-lift"
-              onClick={() => handleImageClick(index)}
-            >
-              <div className="aspect-square overflow-hidden">
-                <img 
-                  src={image.url} 
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-            </Card>
-          ))}
-        </div>
+        <Tabs defaultValue="gallery" className="w-full">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+            <TabsTrigger value="gallery">View Gallery</TabsTrigger>
+            <TabsTrigger value="upload">Upload Images</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="gallery">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {allImages.map((image, index) => (
+                <Card 
+                  key={image.id} 
+                  className="overflow-hidden group cursor-pointer hover-lift"
+                  onClick={() => handleImageClick(index)}
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <img 
+                      src={image.url} 
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="upload">
+            <div className="max-w-2xl mx-auto">
+              <GalleryUpload 
+                galleryId={id || ""}
+                section="primary"
+                onUploadComplete={fetchUploadedImages}
+              />
+            </div>
+          </TabsContent>
+        </Tabs>
       </section>
 
       {lightboxOpen && (
         <Lightbox
-          images={images}
+          images={allImages}
           currentIndex={currentImageIndex}
           onClose={() => setLightboxOpen(false)}
           onNext={handleNext}

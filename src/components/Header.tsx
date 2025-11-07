@@ -22,6 +22,9 @@ const Header = () => {
           <Link to="/about" className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
             About
           </Link>
+          <Link to="/events" className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
+            Events
+          </Link>
           <div className="group relative">
             <button className="text-sm font-medium transition-all hover:text-primary hover:scale-110">
               Nursery
@@ -99,6 +102,9 @@ const Header = () => {
             </Link>
             <Link to="/about" className="block py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               About
+            </Link>
+            <Link to="/events" className="block py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              Events
             </Link>
             <details className="group">
               <summary className="cursor-pointer py-2 text-sm font-semibold text-accent list-none flex items-center justify-between">

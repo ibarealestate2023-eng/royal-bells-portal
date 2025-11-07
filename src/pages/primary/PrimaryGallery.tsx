@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Image } from "lucide-react";
+import { Image, Search } from "lucide-react";
 
 const PrimaryGallery = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const galleries = [
     { id: "classroom-activities", title: "Classroom Activities", count: 24 },
     { id: "sports-day", title: "Sports Day 2024", count: 36 },
@@ -19,6 +23,10 @@ const PrimaryGallery = () => {
     { id: "drama-performance", title: "Drama Performance", count: 25 },
     { id: "parents-day", title: "Parent's Day", count: 38 }
   ];
+
+  const filteredGalleries = galleries.filter((gallery) =>
+    gallery.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen">
@@ -43,11 +51,29 @@ const PrimaryGallery = () => {
             moments from our Primary Section. Each image tells a story of discovery, friendship,
             and achievement.
           </p>
+
+          {/* Search Bar */}
+          <div className="max-w-md mx-auto mt-8">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input
+                placeholder="Search galleries..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Gallery Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleries.map((gallery, index) => (
+          {filteredGalleries.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-muted-foreground">No galleries found matching "{searchQuery}"</p>
+            </div>
+          ) : (
+            filteredGalleries.map((gallery, index) => (
             <Link key={index} to={`/primary/gallery/${gallery.id}`}>
               <Card className="overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer">
               <div className="relative h-64 bg-gradient-to-br from-secondary/20 to-secondary/5 flex items-center justify-center">
@@ -59,7 +85,8 @@ const PrimaryGallery = () => {
               </div>
               </Card>
             </Link>
-          ))}
+            ))
+          )}
         </div>
       </section>
 
