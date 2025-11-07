@@ -7,17 +7,17 @@ import { Image } from "lucide-react";
 const PrimaryGallery = () => {
   const galleries = [
     { id: "classroom-activities", title: "Classroom Activities", count: 24 },
-    { title: "Sports Day 2024", count: 36 },
-    { title: "Science Fair", count: 18 },
-    { title: "Cultural Day", count: 42 },
-    { title: "Field Trips", count: 30 },
-    { title: "Art Exhibition", count: 28 },
-    { title: "Music Concert", count: 20 },
-    { title: "Graduation Ceremony", count: 32 },
-    { title: "Library Sessions", count: 15 },
-    { title: "ICT Lab", count: 22 },
-    { title: "Drama Performance", count: 25 },
-    { title: "Parent's Day", count: 38 }
+    { id: "sports-day", title: "Sports Day 2024", count: 36 },
+    { id: "science-fair", title: "Science Fair", count: 18 },
+    { id: "cultural-day", title: "Cultural Day", count: 42 },
+    { id: "field-trip", title: "Field Trips", count: 30 },
+    { id: "arts-exhibition", title: "Art Exhibition", count: 28 },
+    { id: "music-concert", title: "Music Concert", count: 20 },
+    { id: "graduation", title: "Graduation Ceremony", count: 32 },
+    { id: "library-sessions", title: "Library Sessions", count: 15 },
+    { id: "ict-lab", title: "ICT Lab", count: 22 },
+    { id: "drama-performance", title: "Drama Performance", count: 25 },
+    { id: "parents-day", title: "Parent's Day", count: 38 }
   ];
 
   return (

@@ -1,12 +1,17 @@
 import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Image } from "lucide-react";
+import Lightbox from "@/components/Lightbox";
+import { ArrowLeft } from "lucide-react";
+import scienceImg from "@/assets/gallery/secondary-science-1.jpg";
 
 const SecondaryGalleryDetail = () => {
   const { id } = useParams();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Sample data - in a real app, this would come from an API or database
   const galleries: Record<string, { title: string; description: string; count: number }> = {
@@ -68,11 +73,25 @@ const SecondaryGalleryDetail = () => {
     count: 0
   };
 
-  // Generate placeholder images (in real app, these would be actual image URLs)
+  // Generate images with actual photos
   const images = Array.from({ length: gallery.count }, (_, i) => ({
     id: i + 1,
+    url: scienceImg,
     alt: `${gallery.title} - Image ${i + 1}`
   }));
+
+  const handleImageClick = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const handleNext = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrevious = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   return (
     <div className="min-h-screen">
@@ -93,15 +112,33 @@ const SecondaryGalleryDetail = () => {
 
       <section className="container py-20">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image) => (
-            <Card key={image.id} className="overflow-hidden group cursor-pointer hover-lift">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                <Image className="h-12 w-12 text-primary/40 group-hover:text-primary/60 transition-colors" />
+          {images.map((image, index) => (
+            <Card 
+              key={image.id} 
+              className="overflow-hidden group cursor-pointer hover-lift"
+              onClick={() => handleImageClick(index)}
+            >
+              <div className="aspect-square overflow-hidden">
+                <img 
+                  src={image.url} 
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
               </div>
             </Card>
           ))}
         </div>
       </section>
+
+      {lightboxOpen && (
+        <Lightbox
+          images={images}
+          currentIndex={currentImageIndex}
+          onClose={() => setLightboxOpen(false)}
+          onNext={handleNext}
+          onPrevious={handlePrevious}
+        />
+      )}
 
       <Footer />
     </div>
