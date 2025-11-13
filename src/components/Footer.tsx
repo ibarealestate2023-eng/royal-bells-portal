@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { GraduationCap, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { NewsletterSubscribe } from "@/components/NewsletterSubscribe";
 
 const Footer = () => {
   return (
@@ -73,6 +74,14 @@ const Footer = () => {
               <li><strong>Saturday:</strong><br />9:00 AM - 12:00 PM (Admin Only)</li>
               <li><strong>Sunday:</strong><br />Closed</li>
             </ul>
+          </div>
+        </div>
+
+        {/* Newsletter Section */}
+        <div className="border-t mt-8 pt-8">
+          <div className="flex flex-col items-center space-y-4">
+            <h3 className="font-semibold text-lg">Subscribe to Our Newsletter</h3>
+            <NewsletterSubscribe />
           </div>
         </div>
 

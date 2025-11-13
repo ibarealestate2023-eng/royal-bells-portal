@@ -34,6 +34,7 @@ import NurseryFacilities from "./pages/nursery/NurseryFacilities";
 import PrimaryGalleryDetail from "./pages/gallery/PrimaryGalleryDetail";
 import SecondaryGalleryDetail from "./pages/gallery/SecondaryGalleryDetail";
 import NurseryGalleryDetail from "./pages/gallery/NurseryGalleryDetail";
+import NewsletterConfirm from "./pages/NewsletterConfirm";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -76,6 +77,7 @@ const App = () => (
           <Route path="/primary/gallery/:id" element={<PrimaryGalleryDetail />} />
           <Route path="/secondary/gallery/:id" element={<SecondaryGalleryDetail />} />
           <Route path="/nursery/gallery/:id" element={<NurseryGalleryDetail />} />
+          <Route path="/newsletter/confirm" element={<NewsletterConfirm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
