@@ -17,12 +17,12 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={schoolHero} alt="Royal Bells School" className="w-full h-full object-cover scale-105 animate-scale-in" />
+          <img src={schoolHero} alt="Royal Bell School" className="w-full h-full object-cover scale-105 animate-scale-in" />
           <div className="absolute inset-0 gradient-animate opacity-90" />
         </div>
         <div className="relative z-10 container text-center text-white">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in-down">
-            Royal Bells Group of Schools
+            Royal Bell Schools
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
             Where Excellence Meets Innovation in Education
@@ -33,6 +33,10 @@ const Index = () => {
             </Button>
             <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 hover-lift">
               <Link to="/secondary">Secondary Section</Link>
+            </Button>
+
+            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 hover-lift">
+              <Link to="/secondary">Nursery Section</Link>
             </Button>
           </div>
         </div>
