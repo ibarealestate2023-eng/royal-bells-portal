@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import primaryHero from "@/assets/primary-hero.jpg";
+import primaryHero from "@/assets/royal-bell/IMG-20251114-WA0002.jpg";
 import { BookOpen, Palette, Music, Users, ArrowRight } from "lucide-react";
 
 const PrimaryHome = () => {
