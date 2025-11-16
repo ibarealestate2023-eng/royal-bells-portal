@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import schoolHero from "@/assets/school-hero.jpg";
+import schoolHero from "@/assets/royal-bell/IMG-20251114-WA0007.jpg";
 import primaryHero from "@/assets/primary-hero.jpg";
 import secondaryHero from "@/assets/secondary-hero.jpg";
 import nurseryHero from "@/assets/nursery-hero.jpg";
@@ -17,7 +17,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src=/assets/royal-bell/IMG-20251114-WA0006.jpg alt="Royal Bell School" className="w-full h-full object-cover scale-105 animate-scale-in" />
+          <img src={schoolHero} alt="Royal Bell School" className="w-full h-full object-cover scale-105 animate-scale-in" />
           <div className="absolute inset-0 gradient-animate opacity-90" />
         </div>
         <div className="relative z-10 container text-center text-white">
