@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import nurseryHero from "@/assets/nursery-hero.jpg";
+import nurseryHero from "@/assets/royal-bell/IMG-20251114-WA0002.jpg";
 import { Baby, Heart, Users, BookOpen, ArrowRight } from "lucide-react";
 
 const NurseryHome = () => {
