@@ -4,9 +4,9 @@ import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import schoolHero from "@/assets/royal-bell/IMG-20251114-WA0007.jpg";
-import primaryHero from "@/assets/primary-hero.jpg";
+import primaryHero from "@/assets/royal-bell/IMG-20251114-WA0002.jpg";
 import secondaryHero from "@/assets/secondary-hero.jpg";
-import nurseryHero from "@/assets/nursery-hero.jpg";
+import nurseryHero from "@/assets/royal-bell/IMG-20251114-WA0005.jpg";
 import { BookOpen, Users, Trophy, Globe, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const Index = () => {
@@ -63,7 +63,7 @@ const Index = () => {
           {/* Primary Section Card */}
           <Card className="overflow-hidden group hover-lift hover-glow animate-fade-in-left">
             <div className="relative h-64 overflow-hidden">
-              <img src=/assets/royal-bell/IMG-20251114-WA0002.jpg alt="Primary Section" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <img src={primaryHero} alt="Primary Section" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute inset-0 bg-secondary/20 group-hover:bg-secondary/30 transition-all duration-300" />
             </div>
             <div className="p-8">
@@ -127,7 +127,7 @@ const Index = () => {
           {/* Nursery Section Card */}
           <Card className="overflow-hidden group hover-lift hover-glow animate-fade-in animation-delay-400">
             <div className="relative h-64 overflow-hidden">
-              <img src=/assets/royal-bell/IMG-20251114-WA0005.jpg alt="Nursery Section" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <img src={nurseryHero} alt="Nursery Section" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute inset-0 bg-accent/20 group-hover:bg-accent/30 transition-all duration-300" />
             </div>
             <div className="p-8">
