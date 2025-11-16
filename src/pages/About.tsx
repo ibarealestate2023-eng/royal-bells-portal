@@ -55,9 +55,8 @@ const About = () => {
               </div>
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
               <p className="text-muted-foreground">
-                To provide exceptional education that empowers students with knowledge, skills, and values
-                necessary to become responsible global citizens and lifelong learners who make positive
-                contributions to society.
+                RBS will be a learning community where children will be encourage to take responsiblity for their own learning and to develop independence
+                of thought questioning attitude and a wide variety of skills with the fear of God.No child will be left out in our scheme
               </p>
             </Card>
             
@@ -67,9 +66,9 @@ const About = () => {
               </div>
               <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
               <p className="text-muted-foreground">
-                To be the leading educational institution in Nigeria, recognized for academic excellence,
-                character development, and innovation, producing graduates who excel in their chosen fields
-                and contribute meaningfully to national and global development.
+                To create a happy learning environment where balanced education of such a high standard which will lay a firm foundation
+                for the child to enable him become a confident individual who have the ability to create his 
+                own successful future in a multi cultural society
               </p>
             </Card>
           </div>
