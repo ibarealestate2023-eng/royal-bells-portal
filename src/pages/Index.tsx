@@ -18,7 +18,7 @@ const Index = () => {
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img src={schoolHero} alt="Royal Bell School" className="w-full h-full object-cover scale-105 animate-scale-in" />
-          <div className="absolute inset-0 gradient-animate opacity-90" />
+          <div className="absolute inset-0 gradient-animate opacity-40" />
         </div>
         <div className="relative z-10 container text-center text-white">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in-down">
