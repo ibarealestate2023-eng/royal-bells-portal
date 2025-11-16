@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import schoolHero from "@/assets/royal-bell/IMG-20251114-WA0007.jpg";
+import schoolHero from "@/assets/royal-bell/IMG-20251114-WA0004.jpg";
 import primaryHero from "@/assets/royal-bell/IMG-20251114-WA0002.jpg";
 import secondaryHero from "@/assets/secondary-hero.jpg";
 import nurseryHero from "@/assets/royal-bell/IMG-20251114-WA0005.jpg";
